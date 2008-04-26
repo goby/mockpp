@@ -115,7 +115,7 @@ FULL_PATH_NAMES        = NO
 # If left blank the directory from which doxygen is run is used as the
 # path to strip.
 
-STRIP_FROM_PATH        = /home/darwin/software/mockpp-revised/mockpp-1.16.4
+STRIP_FROM_PATH        = /home/darwin/software/mockpp-revised/revised-mockpp
 
 # The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of
 # the path mentioned in the documentation of a class, which tells
@@ -459,17 +459,17 @@ WARN_LOGFILE           = doxy-warn.log
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT                  = /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/ \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/compat \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/util \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/stub \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/builder \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/constraint \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/matcher \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/production \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/chaining \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/visiting \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/framework
+INPUT                  = /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/ \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/compat \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/util \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/stub \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/builder \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/constraint \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/matcher \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/production \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/chaining \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/visiting \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/framework
 
 # If the value of the INPUT tag contains directories, you can use the
 # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
@@ -491,20 +491,20 @@ RECURSIVE              = NO
 # excluded from the INPUT source files. This way you can easily exclude a
 # subdirectory from a directory tree whose root is specified with the INPUT tag.
 
-EXCLUDE                = /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/doc-template.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config-bcb5.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config-msvc.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config-msvc_71.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config-msvc_60_70.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config-cygwin.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/mockpp_config.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/lint-bcb \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/visitable-template.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/chainable-template.h \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/builder/dummy.cpp \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/matcher/dummy.cpp \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/constraint/dummy.cpp \
-                         /home/darwin/software/mockpp-revised/mockpp-1.16.4/mockpp/stub/dummy.cpp
+EXCLUDE                = /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/doc-template.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config-bcb5.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config-msvc.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config-msvc_71.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config-msvc_60_70.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config-cygwin.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/mockpp_config.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/lint-bcb \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/visitable-template.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/chainable-template.h \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/builder/dummy.cpp \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/matcher/dummy.cpp \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/constraint/dummy.cpp \
+                         /home/darwin/software/mockpp-revised/revised-mockpp/mockpp/stub/dummy.cpp
 
 # The EXCLUDE_SYMLINKS tag can be used select whether or not files or
 # directories that are symbolic links (a Unix filesystem feature) are excluded
