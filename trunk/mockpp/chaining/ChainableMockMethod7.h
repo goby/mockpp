@@ -156,10 +156,10 @@ class ChainableMockMethod7
       return this->getCoreMock().invoke(inv);
     }
 
-	 RT operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7) const
-	 {
-		return forward(p1, p2, p3, p4, p5, p6, p7);
-	 }
+    RT operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7) const
+    {
+      return forward(p1, p2, p3, p4, p5, p6, p7);
+    }
 
     template <typename R, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
     typename TypeTraits<R>::RefType anycall(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7) const
@@ -190,7 +190,7 @@ class ChainableMockMethod7
       OutBoundAnyValue<outBoundP6, T6>::outBound(p6, pp6);
       OutBoundAnyValue<outBoundP7, T7>::outBound(p7, pp7);
   
-      return rtIsAny? any_cast<typename TypeTraits<R>::RefType>(r): r;    
+      return rtIsAny ? any_cast<typename TypeTraits<R>::RefType>(r) : r;    
     }
 
 };
@@ -250,10 +250,10 @@ class ChainableMockMethod7<void, P1, P2, P3, P4, P5, P6, P7>
       this->getCoreMock().invoke(inv);
     }
 
-	 void operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7) const
-	 {
-		forward(p1, p2, p3, p4, p5, p6, p7);
-	 }
+    void operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7) const
+    {
+      forward(p1, p2, p3, p4, p5, p6, p7);
+    }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
     void anycall(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7) const

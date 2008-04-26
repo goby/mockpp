@@ -176,10 +176,10 @@ class ChainableMockMethod12
       return this->getCoreMock().invoke(inv);
     }
 
-	 RT operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8, P9 p9, P10 p10, P11 p11, P12 p12) const
-	 {
-		return forward(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
-	 }
+    RT operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8, P9 p9, P10 p10, P11 p11, P12 p12) const
+    {
+      return forward(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+    }
 
     template <typename R, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10, typename T11, typename T12>
     typename TypeTraits<R>::RefType anycall(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10, T11 p11, T12 p12) const
@@ -225,7 +225,7 @@ class ChainableMockMethod12
       OutBoundAnyValue<outBoundP11, T11>::outBound(p11, pp11);
       OutBoundAnyValue<outBoundP12, T12>::outBound(p12, pp12);
   
-      return rtIsAny? any_cast<typename TypeTraits<R>::RefType>(r): r;    
+      return rtIsAny ? any_cast<typename TypeTraits<R>::RefType>(r) : r;    
     }
 
 };
@@ -300,10 +300,10 @@ class ChainableMockMethod12<void, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, 
       this->getCoreMock().invoke(inv);
     }
 
-	 void operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8, P9 p9, P10 p10, P11 p11, P12 p12) const
-	 {
-		forward(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
-	 }
+    void operator () (P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7, P8 p8, P9 p9, P10 p10, P11 p11, P12 p12) const
+    {
+      forward(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+    }
 
     template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10, typename T11, typename T12>
     void anycall(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10, T11 p11, T12 p12) const

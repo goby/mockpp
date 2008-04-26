@@ -351,10 +351,10 @@ print OUT "
 ";
 
 print OUT "
-	 RT operator () (" . $normalParms . ") const
-	 {
-		return forward(" . $args . ");
-	 }
+    RT operator () (" . $normalParms . ") const
+    {
+      return forward(" . $args . ");
+    }
 ";
 
 print OUT "
@@ -394,7 +394,7 @@ if($numArgs > 0) {
 }
 
 print OUT "
-      return rtIsAny? any_cast<typename TypeTraits<R>::RefType>(r): r;    
+      return rtIsAny ? any_cast<typename TypeTraits<R>::RefType>(r) : r;    
     }
 ";
 
@@ -467,10 +467,10 @@ print OUT "
 ";
 
 print OUT "
-	 void operator () (" . $normalParms . ") const
-	 {
-		forward(" . $args . ");
-	 }
+    void operator () (" . $normalParms . ") const
+    {
+      forward(" . $args . ");
+    }
 ";
 
 if($numArgs > 0) {
