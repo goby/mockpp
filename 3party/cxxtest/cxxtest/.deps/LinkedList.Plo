@@ -1,0 +1,9 @@
+LinkedList.lo LinkedList.o: LinkedList.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/LinkedList.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/LinkedList.h:

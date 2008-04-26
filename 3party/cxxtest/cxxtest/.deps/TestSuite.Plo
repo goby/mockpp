@@ -1,0 +1,27 @@
+TestSuite.lo TestSuite.o: TestSuite.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/TestSuite.h \
+  ../../../3party/cxxtest/cxxtest/TestTracker.h \
+  ../../../3party/cxxtest/cxxtest/TestListener.h \
+  ../../../3party/cxxtest/cxxtest/Descriptions.h \
+  ../../../3party/cxxtest/cxxtest/LinkedList.h \
+  ../../../3party/cxxtest/cxxtest/DummyDescriptions.h \
+  ../../../3party/cxxtest/cxxtest/ValueTraits.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/TestSuite.h:
+
+../../../3party/cxxtest/cxxtest/TestTracker.h:
+
+../../../3party/cxxtest/cxxtest/TestListener.h:
+
+../../../3party/cxxtest/cxxtest/Descriptions.h:
+
+../../../3party/cxxtest/cxxtest/LinkedList.h:
+
+../../../3party/cxxtest/cxxtest/DummyDescriptions.h:
+
+../../../3party/cxxtest/cxxtest/ValueTraits.h:

@@ -1,0 +1,9 @@
+ValueTraits.lo ValueTraits.o: ValueTraits.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/ValueTraits.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/ValueTraits.h:

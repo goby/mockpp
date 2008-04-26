@@ -1,0 +1,12 @@
+xmlrole.lo xmlrole.o: xmlrole.c ../../../config.h internal.h xmlrole.h \
+  xmltok.h ascii.h
+
+../../../config.h:
+
+internal.h:
+
+xmlrole.h:
+
+xmltok.h:
+
+ascii.h:
