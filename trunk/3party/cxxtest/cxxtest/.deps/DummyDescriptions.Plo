@@ -1,0 +1,15 @@
+DummyDescriptions.lo DummyDescriptions.o: DummyDescriptions.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/DummyDescriptions.h \
+  ../../../3party/cxxtest/cxxtest/Descriptions.h \
+  ../../../3party/cxxtest/cxxtest/LinkedList.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/DummyDescriptions.h:
+
+../../../3party/cxxtest/cxxtest/Descriptions.h:
+
+../../../3party/cxxtest/cxxtest/LinkedList.h:

@@ -1,0 +1,699 @@
+cppunit.o cppunit.o: cppunit.cpp ../../../mockpp/mockpp.h \
+  ../../../config.h /usr/include/c++/4.1.3/typeinfo \
+  /usr/include/c++/4.1.3/exception /usr/include/c++/4.1.3/limits \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/c++config.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/os_defines.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-32.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/cpu_defines.h \
+  /usr/include/unistd.h /usr/include/bits/posix_opt.h \
+  /usr/include/bits/environments.h /usr/include/bits/types.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/stddef.h \
+  /usr/include/bits/typesizes.h /usr/include/bits/confname.h \
+  /usr/include/getopt.h /usr/include/c++/4.1.3/string \
+  /usr/include/c++/4.1.3/bits/stringfwd.h \
+  /usr/include/c++/4.1.3/bits/char_traits.h \
+  /usr/include/c++/4.1.3/cstring /usr/include/c++/4.1.3/cstddef \
+  /usr/include/string.h /usr/include/xlocale.h \
+  /usr/include/c++/4.1.3/bits/stl_algobase.h \
+  /usr/include/c++/4.1.3/climits \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/limits.h \
+  /usr/lib/gcc/i486-linux-gnu/4.1.3/include/syslimits.h \
+  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+  /usr/include/bits/stdio_lim.h /usr/include/c++/4.1.3/cstdlib \
+  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/sys/types.h /usr/include/time.h \
+  /usr/include/sys/select.h /usr/include/bits/select.h \
+  /usr/include/bits/sigset.h /usr/include/bits/time.h \
+  /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+  /usr/include/alloca.h /usr/include/c++/4.1.3/iosfwd \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/c++locale.h \
+  /usr/include/c++/4.1.3/cstdio /usr/include/stdio.h /usr/include/libio.h \
+  /usr/include/_G_config.h /usr/include/wchar.h /usr/include/bits/wchar.h \
+  /usr/include/gconv.h /usr/lib/gcc/i486-linux-gnu/4.1.3/include/stdarg.h \
+  /usr/include/bits/sys_errlist.h /usr/include/c++/4.1.3/clocale \
+  /usr/include/locale.h /usr/include/bits/locale.h \
+  /usr/include/langinfo.h /usr/include/nl_types.h /usr/include/iconv.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/c++io.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/gthr.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/gthr-default.h \
+  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
+  /usr/include/signal.h /usr/include/bits/setjmp.h \
+  /usr/include/c++/4.1.3/cctype /usr/include/ctype.h \
+  /usr/include/c++/4.1.3/bits/postypes.h /usr/include/c++/4.1.3/cwchar \
+  /usr/include/c++/4.1.3/ctime /usr/include/stdint.h \
+  /usr/include/c++/4.1.3/bits/functexcept.h \
+  /usr/include/c++/4.1.3/exception_defines.h \
+  /usr/include/c++/4.1.3/bits/stl_pair.h \
+  /usr/include/c++/4.1.3/bits/cpp_type_traits.h \
+  /usr/include/c++/4.1.3/bits/stl_iterator_base_types.h \
+  /usr/include/c++/4.1.3/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/4.1.3/bits/concept_check.h \
+  /usr/include/c++/4.1.3/bits/stl_iterator.h \
+  /usr/include/c++/4.1.3/debug/debug.h /usr/include/c++/4.1.3/memory \
+  /usr/include/c++/4.1.3/bits/allocator.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/c++allocator.h \
+  /usr/include/c++/4.1.3/ext/new_allocator.h /usr/include/c++/4.1.3/new \
+  /usr/include/c++/4.1.3/bits/stl_construct.h \
+  /usr/include/c++/4.1.3/bits/stl_uninitialized.h \
+  /usr/include/c++/4.1.3/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/4.1.3/bits/stl_function.h \
+  /usr/include/c++/4.1.3/bits/basic_string.h \
+  /usr/include/c++/4.1.3/bits/atomicity.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/atomic_word.h \
+  /usr/include/c++/4.1.3/algorithm /usr/include/c++/4.1.3/bits/stl_algo.h \
+  /usr/include/c++/4.1.3/bits/stl_heap.h \
+  /usr/include/c++/4.1.3/bits/stl_tempbuf.h \
+  /usr/include/c++/4.1.3/bits/basic_string.tcc \
+  ../../../mockpp/Throwable.h \
+  ../../../mockpp/visiting/VisitableMockObject.h \
+  /usr/include/c++/4.1.3/vector /usr/include/c++/4.1.3/bits/stl_vector.h \
+  /usr/include/c++/4.1.3/bits/stl_bvector.h \
+  /usr/include/c++/4.1.3/bits/vector.tcc ../../../mockpp/MockObject.h \
+  ../../../mockpp/VerifiableList.h ../../../mockpp/Verifiable.h \
+  ../../../mockpp/ThrowableList.h ../../../mockpp/ExpectationList.h \
+  ../../../mockpp/AbstractExpectationCollection.h \
+  ../../../mockpp/AbstractExpectation.h ../../../mockpp/Expectation.h \
+  ../../../mockpp/compat/Asserter.h \
+  ../../../mockpp/compat/AssertionFailedError.h \
+  ../../../mockpp/compat/Exception.h ../../../mockpp/compat/Formatter.h \
+  /usr/include/c++/4.1.3/sstream /usr/include/c++/4.1.3/istream \
+  /usr/include/c++/4.1.3/ios /usr/include/c++/4.1.3/bits/localefwd.h \
+  /usr/include/c++/4.1.3/bits/ios_base.h \
+  /usr/include/c++/4.1.3/bits/locale_classes.h \
+  /usr/include/c++/4.1.3/streambuf \
+  /usr/include/c++/4.1.3/bits/streambuf.tcc \
+  /usr/include/c++/4.1.3/bits/basic_ios.h \
+  /usr/include/c++/4.1.3/bits/streambuf_iterator.h \
+  /usr/include/c++/4.1.3/bits/locale_facets.h \
+  /usr/include/c++/4.1.3/cwctype /usr/include/wctype.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/ctype_base.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/ctype_inline.h \
+  /usr/include/c++/4.1.3/bits/codecvt.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/time_members.h \
+  /usr/include/c++/4.1.3/i486-linux-gnu/bits/messages_members.h \
+  /usr/include/c++/4.1.3/bits/basic_ios.tcc \
+  /usr/include/c++/4.1.3/bits/istream.tcc /usr/include/c++/4.1.3/locale \
+  /usr/include/c++/4.1.3/bits/locale_facets.tcc \
+  /usr/include/c++/4.1.3/ostream /usr/include/c++/4.1.3/bits/ostream.tcc \
+  /usr/include/c++/4.1.3/bits/sstream.tcc ../../../mockpp/util/AssertMo.h \
+  ../../../mockpp/ExpectationCounter.h ../../../mockpp/ReturnObjectList.h \
+  ../../../mockpp/chaining/TypeTraits.h \
+  ../../../mockpp/constraint/ConstraintList.h \
+  ../../../mockpp/constraint/Constraint.h \
+  ../../../mockpp/util/AutoPointer.h ../../../mockpp/SelfDescribing.h \
+  ../../../mockpp/constraint/ConstraintHolder.h \
+  ../../../mockpp/constraint/TypelessConstraint.h \
+  ../../../mockpp/constraint/IsEqual.h \
+  ../../../mockpp/constraint/EqualityUtil.h \
+  ../../../mockpp/constraint/IsAnything.h \
+  ../../../mockpp/visiting/VisitableMockObject_macro.h \
+  ../../../mockpp/visiting/VisitableMockObject_template.h \
+  ../../../mockpp/visiting/ResponseVector1.h \
+  ../../../mockpp/visiting/ResponseVector2.h \
+  ../../../mockpp/visiting/ResponseVector3.h \
+  ../../../mockpp/visiting/ResponseVector4.h \
+  ../../../mockpp/visiting/ResponseVector5.h \
+  ../../../mockpp/chaining/ChainableMockObject.h \
+  ../../../mockpp/chaining/ChainableMockObject_macro.h \
+  ../../../mockpp/chaining/Invocation.h \
+  ../../../mockpp/constraint/ConstraintSet.h \
+  ../../../mockpp/constraint/ConstraintSetN.h \
+  ../../../mockpp/chaining/InvocationN.h \
+  ../../../mockpp/chaining/CoreMock.h \
+  ../../../mockpp/chaining/AbstractDynamicChainingMock.h \
+  ../../../mockpp/chaining/DynamicChainingMock.h \
+  ../../../mockpp/chaining/Invokable.h ../../../mockpp/stub/StubHolder.h \
+  ../../../mockpp/stub/Stub.h ../../../mockpp/stub/TypelessStub.h \
+  ../../../mockpp/chaining/DynamicChainingMockError.h \
+  ../../../mockpp/chaining/InvocationDispatcher.h \
+  ../../../mockpp/chaining/InvocationMocker.h \
+  ../../../mockpp/chaining/StubMatchersCollection.h \
+  ../../../mockpp/matcher/MatcherHolder.h \
+  ../../../mockpp/matcher/InvocationMatcher.h \
+  ../../../mockpp/matcher/TypelessMatcher.h \
+  ../../../mockpp/matcher/ArgumentsMatcher.h \
+  ../../../mockpp/matcher/StatelessInvocationMatcher.h \
+  ../../../mockpp/stub/DefaultResultStub.h \
+  ../../../mockpp/stub/VoidStub.h \
+  ../../../mockpp/chaining/FIFOInvocationDispatcher.h \
+  ../../../mockpp/chaining/AbstractInvocationDispatcher.h \
+  ../../../mockpp/stub/TestFailureStub.h \
+  ../../../mockpp/stub/ReturnStub.h \
+  ../../../mockpp/chaining/ChainingMockBuilder.h \
+  /usr/include/c++/4.1.3/map /usr/include/c++/4.1.3/bits/stl_tree.h \
+  /usr/include/c++/4.1.3/bits/stl_map.h \
+  /usr/include/c++/4.1.3/bits/stl_multimap.h \
+  ../../../mockpp/builder/BuilderNamespace.h \
+  ../../../mockpp/matcher/InvokedRecorder.h \
+  ../../../mockpp/builder/MatchBuilder.h \
+  ../../../mockpp/builder/StubBuilder.h \
+  ../../../mockpp/builder/IdentityBuilder.h \
+  ../../../mockpp/stub/ProcStubHelper.h ../../../mockpp/stub/ProcStub1.h \
+  ../../../mockpp/chaining/InvocationN.h \
+  ../../../mockpp/matcher/InvokedAfterMatcher.h \
+  ../../../mockpp/matcher/InvokedBeforeMatcher.h \
+  ../../../mockpp/builder/InvocationMockerBuilder.h \
+  ../../../mockpp/builder/ArgumentsMatchBuilder.h \
+  ../../../mockpp/matcher/NoArgumentsMatcher.h \
+  ../../../mockpp/matcher/StatelessInvocationMatcher.h \
+  ../../../mockpp/matcher/AnyArgumentsMatcher.h \
+  ../../../mockpp/builder/ArgumentsMatchBuilderN.h \
+  ../../../mockpp/chaining/ChainingMockObjectSupport.h \
+  ../../../mockpp/constraint/And.h ../../../mockpp/constraint/Or.h \
+  ../../../mockpp/constraint/IsSame.h ../../../mockpp/constraint/IsNot.h \
+  ../../../mockpp/constraint/IsCloseTo.h \
+  ../../../mockpp/constraint/StringContains.h \
+  ../../../mockpp/constraint/StringStartsWith.h \
+  ../../../mockpp/constraint/StringEndsWith.h \
+  ../../../mockpp/constraint/IsInstanceOf.h \
+  ../../../mockpp/constraint/IsGreaterThan.h \
+  ../../../mockpp/constraint/IsGreaterOrEqual.h \
+  ../../../mockpp/constraint/IsLessThan.h \
+  ../../../mockpp/constraint/IsLessOrEqual.h \
+  ../../../mockpp/constraint/OutBound.h ../../../mockpp/stub/ThrowStub.h \
+  ../../../mockpp/stub/RandomStub.h \
+  ../../../mockpp/stub/ReturnObjectListStub.h \
+  ../../../mockpp/chaining/AnyType.h /usr/include/c++/4.1.3/list \
+  /usr/include/c++/4.1.3/bits/stl_list.h \
+  /usr/include/c++/4.1.3/bits/list.tcc \
+  ../../../mockpp/chaining/OnConsecutiveCalls.h \
+  ../../../mockpp/stub/StubSequence.h \
+  ../../../mockpp/stub/TypelessStubSequence.h \
+  ../../../mockpp/chaining/ReturnValueAndTrigger.h \
+  ../../../mockpp/constraint/TriggeredConstraint.h \
+  ../../../mockpp/stub/ReturnAndTriggerStub.h \
+  ../../../mockpp/stub/TriggerStub.h Calculator.h
+
+../../../mockpp/mockpp.h:
+
+../../../config.h:
+
+/usr/include/c++/4.1.3/typeinfo:
+
+/usr/include/c++/4.1.3/exception:
+
+/usr/include/c++/4.1.3/limits:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/c++config.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/os_defines.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/cpu_defines.h:
+
+/usr/include/unistd.h:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/types.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/stddef.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/c++/4.1.3/string:
+
+/usr/include/c++/4.1.3/bits/stringfwd.h:
+
+/usr/include/c++/4.1.3/bits/char_traits.h:
+
+/usr/include/c++/4.1.3/cstring:
+
+/usr/include/c++/4.1.3/cstddef:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/c++/4.1.3/bits/stl_algobase.h:
+
+/usr/include/c++/4.1.3/climits:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/limits.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/c++/4.1.3/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/include/c++/4.1.3/iosfwd:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/c++locale.h:
+
+/usr/include/c++/4.1.3/cstdio:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/gconv.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.1.3/include/stdarg.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/c++/4.1.3/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/langinfo.h:
+
+/usr/include/nl_types.h:
+
+/usr/include/iconv.h:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/c++io.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/gthr.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/signal.h:
+
+/usr/include/bits/setjmp.h:
+
+/usr/include/c++/4.1.3/cctype:
+
+/usr/include/ctype.h:
+
+/usr/include/c++/4.1.3/bits/postypes.h:
+
+/usr/include/c++/4.1.3/cwchar:
+
+/usr/include/c++/4.1.3/ctime:
+
+/usr/include/stdint.h:
+
+/usr/include/c++/4.1.3/bits/functexcept.h:
+
+/usr/include/c++/4.1.3/exception_defines.h:
+
+/usr/include/c++/4.1.3/bits/stl_pair.h:
+
+/usr/include/c++/4.1.3/bits/cpp_type_traits.h:
+
+/usr/include/c++/4.1.3/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/4.1.3/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/4.1.3/bits/concept_check.h:
+
+/usr/include/c++/4.1.3/bits/stl_iterator.h:
+
+/usr/include/c++/4.1.3/debug/debug.h:
+
+/usr/include/c++/4.1.3/memory:
+
+/usr/include/c++/4.1.3/bits/allocator.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/c++allocator.h:
+
+/usr/include/c++/4.1.3/ext/new_allocator.h:
+
+/usr/include/c++/4.1.3/new:
+
+/usr/include/c++/4.1.3/bits/stl_construct.h:
+
+/usr/include/c++/4.1.3/bits/stl_uninitialized.h:
+
+/usr/include/c++/4.1.3/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/4.1.3/bits/stl_function.h:
+
+/usr/include/c++/4.1.3/bits/basic_string.h:
+
+/usr/include/c++/4.1.3/bits/atomicity.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/atomic_word.h:
+
+/usr/include/c++/4.1.3/algorithm:
+
+/usr/include/c++/4.1.3/bits/stl_algo.h:
+
+/usr/include/c++/4.1.3/bits/stl_heap.h:
+
+/usr/include/c++/4.1.3/bits/stl_tempbuf.h:
+
+/usr/include/c++/4.1.3/bits/basic_string.tcc:
+
+../../../mockpp/Throwable.h:
+
+../../../mockpp/visiting/VisitableMockObject.h:
+
+/usr/include/c++/4.1.3/vector:
+
+/usr/include/c++/4.1.3/bits/stl_vector.h:
+
+/usr/include/c++/4.1.3/bits/stl_bvector.h:
+
+/usr/include/c++/4.1.3/bits/vector.tcc:
+
+../../../mockpp/MockObject.h:
+
+../../../mockpp/VerifiableList.h:
+
+../../../mockpp/Verifiable.h:
+
+../../../mockpp/ThrowableList.h:
+
+../../../mockpp/ExpectationList.h:
+
+../../../mockpp/AbstractExpectationCollection.h:
+
+../../../mockpp/AbstractExpectation.h:
+
+../../../mockpp/Expectation.h:
+
+../../../mockpp/compat/Asserter.h:
+
+../../../mockpp/compat/AssertionFailedError.h:
+
+../../../mockpp/compat/Exception.h:
+
+../../../mockpp/compat/Formatter.h:
+
+/usr/include/c++/4.1.3/sstream:
+
+/usr/include/c++/4.1.3/istream:
+
+/usr/include/c++/4.1.3/ios:
+
+/usr/include/c++/4.1.3/bits/localefwd.h:
+
+/usr/include/c++/4.1.3/bits/ios_base.h:
+
+/usr/include/c++/4.1.3/bits/locale_classes.h:
+
+/usr/include/c++/4.1.3/streambuf:
+
+/usr/include/c++/4.1.3/bits/streambuf.tcc:
+
+/usr/include/c++/4.1.3/bits/basic_ios.h:
+
+/usr/include/c++/4.1.3/bits/streambuf_iterator.h:
+
+/usr/include/c++/4.1.3/bits/locale_facets.h:
+
+/usr/include/c++/4.1.3/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/ctype_base.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/ctype_inline.h:
+
+/usr/include/c++/4.1.3/bits/codecvt.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/time_members.h:
+
+/usr/include/c++/4.1.3/i486-linux-gnu/bits/messages_members.h:
+
+/usr/include/c++/4.1.3/bits/basic_ios.tcc:
+
+/usr/include/c++/4.1.3/bits/istream.tcc:
+
+/usr/include/c++/4.1.3/locale:
+
+/usr/include/c++/4.1.3/bits/locale_facets.tcc:
+
+/usr/include/c++/4.1.3/ostream:
+
+/usr/include/c++/4.1.3/bits/ostream.tcc:
+
+/usr/include/c++/4.1.3/bits/sstream.tcc:
+
+../../../mockpp/util/AssertMo.h:
+
+../../../mockpp/ExpectationCounter.h:
+
+../../../mockpp/ReturnObjectList.h:
+
+../../../mockpp/chaining/TypeTraits.h:
+
+../../../mockpp/constraint/ConstraintList.h:
+
+../../../mockpp/constraint/Constraint.h:
+
+../../../mockpp/util/AutoPointer.h:
+
+../../../mockpp/SelfDescribing.h:
+
+../../../mockpp/constraint/ConstraintHolder.h:
+
+../../../mockpp/constraint/TypelessConstraint.h:
+
+../../../mockpp/constraint/IsEqual.h:
+
+../../../mockpp/constraint/EqualityUtil.h:
+
+../../../mockpp/constraint/IsAnything.h:
+
+../../../mockpp/visiting/VisitableMockObject_macro.h:
+
+../../../mockpp/visiting/VisitableMockObject_template.h:
+
+../../../mockpp/visiting/ResponseVector1.h:
+
+../../../mockpp/visiting/ResponseVector2.h:
+
+../../../mockpp/visiting/ResponseVector3.h:
+
+../../../mockpp/visiting/ResponseVector4.h:
+
+../../../mockpp/visiting/ResponseVector5.h:
+
+../../../mockpp/chaining/ChainableMockObject.h:
+
+../../../mockpp/chaining/ChainableMockObject_macro.h:
+
+../../../mockpp/chaining/Invocation.h:
+
+../../../mockpp/constraint/ConstraintSet.h:
+
+../../../mockpp/constraint/ConstraintSetN.h:
+
+../../../mockpp/chaining/InvocationN.h:
+
+../../../mockpp/chaining/CoreMock.h:
+
+../../../mockpp/chaining/AbstractDynamicChainingMock.h:
+
+../../../mockpp/chaining/DynamicChainingMock.h:
+
+../../../mockpp/chaining/Invokable.h:
+
+../../../mockpp/stub/StubHolder.h:
+
+../../../mockpp/stub/Stub.h:
+
+../../../mockpp/stub/TypelessStub.h:
+
+../../../mockpp/chaining/DynamicChainingMockError.h:
+
+../../../mockpp/chaining/InvocationDispatcher.h:
+
+../../../mockpp/chaining/InvocationMocker.h:
+
+../../../mockpp/chaining/StubMatchersCollection.h:
+
+../../../mockpp/matcher/MatcherHolder.h:
+
+../../../mockpp/matcher/InvocationMatcher.h:
+
+../../../mockpp/matcher/TypelessMatcher.h:
+
+../../../mockpp/matcher/ArgumentsMatcher.h:
+
+../../../mockpp/matcher/StatelessInvocationMatcher.h:
+
+../../../mockpp/stub/DefaultResultStub.h:
+
+../../../mockpp/stub/VoidStub.h:
+
+../../../mockpp/chaining/FIFOInvocationDispatcher.h:
+
+../../../mockpp/chaining/AbstractInvocationDispatcher.h:
+
+../../../mockpp/stub/TestFailureStub.h:
+
+../../../mockpp/stub/ReturnStub.h:
+
+../../../mockpp/chaining/ChainingMockBuilder.h:
+
+/usr/include/c++/4.1.3/map:
+
+/usr/include/c++/4.1.3/bits/stl_tree.h:
+
+/usr/include/c++/4.1.3/bits/stl_map.h:
+
+/usr/include/c++/4.1.3/bits/stl_multimap.h:
+
+../../../mockpp/builder/BuilderNamespace.h:
+
+../../../mockpp/matcher/InvokedRecorder.h:
+
+../../../mockpp/builder/MatchBuilder.h:
+
+../../../mockpp/builder/StubBuilder.h:
+
+../../../mockpp/builder/IdentityBuilder.h:
+
+../../../mockpp/stub/ProcStubHelper.h:
+
+../../../mockpp/stub/ProcStub1.h:
+
+../../../mockpp/chaining/InvocationN.h:
+
+../../../mockpp/matcher/InvokedAfterMatcher.h:
+
+../../../mockpp/matcher/InvokedBeforeMatcher.h:
+
+../../../mockpp/builder/InvocationMockerBuilder.h:
+
+../../../mockpp/builder/ArgumentsMatchBuilder.h:
+
+../../../mockpp/matcher/NoArgumentsMatcher.h:
+
+../../../mockpp/matcher/StatelessInvocationMatcher.h:
+
+../../../mockpp/matcher/AnyArgumentsMatcher.h:
+
+../../../mockpp/builder/ArgumentsMatchBuilderN.h:
+
+../../../mockpp/chaining/ChainingMockObjectSupport.h:
+
+../../../mockpp/constraint/And.h:
+
+../../../mockpp/constraint/Or.h:
+
+../../../mockpp/constraint/IsSame.h:
+
+../../../mockpp/constraint/IsNot.h:
+
+../../../mockpp/constraint/IsCloseTo.h:
+
+../../../mockpp/constraint/StringContains.h:
+
+../../../mockpp/constraint/StringStartsWith.h:
+
+../../../mockpp/constraint/StringEndsWith.h:
+
+../../../mockpp/constraint/IsInstanceOf.h:
+
+../../../mockpp/constraint/IsGreaterThan.h:
+
+../../../mockpp/constraint/IsGreaterOrEqual.h:
+
+../../../mockpp/constraint/IsLessThan.h:
+
+../../../mockpp/constraint/IsLessOrEqual.h:
+
+../../../mockpp/constraint/OutBound.h:
+
+../../../mockpp/stub/ThrowStub.h:
+
+../../../mockpp/stub/RandomStub.h:
+
+../../../mockpp/stub/ReturnObjectListStub.h:
+
+../../../mockpp/chaining/AnyType.h:
+
+/usr/include/c++/4.1.3/list:
+
+/usr/include/c++/4.1.3/bits/stl_list.h:
+
+/usr/include/c++/4.1.3/bits/list.tcc:
+
+../../../mockpp/chaining/OnConsecutiveCalls.h:
+
+../../../mockpp/stub/StubSequence.h:
+
+../../../mockpp/stub/TypelessStubSequence.h:
+
+../../../mockpp/chaining/ReturnValueAndTrigger.h:
+
+../../../mockpp/constraint/TriggeredConstraint.h:
+
+../../../mockpp/stub/ReturnAndTriggerStub.h:
+
+../../../mockpp/stub/TriggerStub.h:
+
+Calculator.h:

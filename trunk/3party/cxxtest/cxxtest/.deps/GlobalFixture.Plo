@@ -1,0 +1,12 @@
+GlobalFixture.lo GlobalFixture.o: GlobalFixture.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/GlobalFixture.h \
+  ../../../3party/cxxtest/cxxtest/LinkedList.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/GlobalFixture.h:
+
+../../../3party/cxxtest/cxxtest/LinkedList.h:

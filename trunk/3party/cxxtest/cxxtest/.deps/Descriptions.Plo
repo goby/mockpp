@@ -1,0 +1,15 @@
+Descriptions.lo Descriptions.o: Descriptions.cpp \
+  ../../../3party/cxxtest/cxxtest/Flags.h ../../../config.h \
+  ../../../3party/cxxtest/cxxtest/Descriptions.h \
+  ../../../3party/cxxtest/cxxtest/LinkedList.h \
+  ../../../3party/cxxtest/cxxtest/ValueTraits.h
+
+../../../3party/cxxtest/cxxtest/Flags.h:
+
+../../../config.h:
+
+../../../3party/cxxtest/cxxtest/Descriptions.h:
+
+../../../3party/cxxtest/cxxtest/LinkedList.h:
+
+../../../3party/cxxtest/cxxtest/ValueTraits.h:
