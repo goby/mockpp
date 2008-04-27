@@ -42,22 +42,16 @@
 
 MOCKPP_NS_START
 
-/** Is the value less than another value?
-  * @ingroup grp_constraint
-  * @see mockpp::lt
-  */
 template <typename T>
-class IsLessThan : public Constraint<T>
+class IsLessThanBase : public Constraint<T>
 {
   public:
 
-  /** Constructs the object
-    * @param less      the value for the comparison
-    */
-    IsLessThan( const T &less)
-      : lessLimit(less)
-    {
-    }
+    typedef typename TypeTraits<T>::RefType Ref;
+
+    IsLessThanBase( const T& less_eq)
+      : lessLimit (less_eq)
+    {}
 
   /** Evaluates the constraint
     * @param arg the object against which the constraint is evaluated.
@@ -69,6 +63,33 @@ class IsLessThan : public Constraint<T>
       return arg < lessLimit;
     }
 
+    Ref getLessLimit() const
+    {
+      return const_cast<Ref>(lessLimit);
+    }
+
+private:
+
+    const T lessLimit;
+};
+
+/** Is the value less than another value?
+  * @ingroup grp_constraint
+  * @see mockpp::lt
+  */
+template <typename T>
+class IsLessThan : public IsLessThanBase<T>
+{
+  public:
+
+  /** Constructs the object
+    * @param less      the value for the comparison
+    */
+    IsLessThan( const T &less)
+      : IsLessThanBase<T>(less)
+    {
+    }
+
   /** Appends the description of this object to the buffer.
     * @param buffer The buffer that the description is appended to.
     * @return The current content of the buffer data
@@ -76,14 +97,28 @@ class IsLessThan : public Constraint<T>
     virtual String describeTo( String &buffer ) const
     {
        String fmt = MOCKPP_PCHAR("lessThan %1");
-       fmt << lessLimit;
+       fmt << IsLessThanBase<T>::getLessLimit();
        buffer += fmt;
        return buffer;
     }
+};
 
-  private:
+template <typename T>
+class IsLT : public IsLessThanBase<AnyType>
+{
+  public:
 
-    const T lessLimit;
+    IsLT( const T& lower )
+      : IsLessThanBase<AnyType>(lower)
+    {}
+
+    virtual String describeTo( String &buffer ) const
+    {
+       String fmt = MOCKPP_PCHAR("greaterOrEqual %1");
+       fmt << any_cast<T>(IsLessThanBase<AnyType>::getLessLimit());
+       buffer += fmt;
+       return buffer;
+    }
 };
 
 
@@ -91,4 +126,5 @@ MOCKPP_NS_END
 
 
 #endif // MOCKPP_ISLESSTHAN_H
+
 

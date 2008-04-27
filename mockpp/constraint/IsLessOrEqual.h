@@ -44,17 +44,18 @@ MOCKPP_NS_START
   * @see mockpp::le
   */
 template <typename T>
-class IsLessOrEqual : public Constraint<T>
+class IsLessOrEqualBase : public Constraint<T>
 {
   public:
+
+    typedef typename TypeTraits<T>::RefType Ref;
 
   /** Constructs the object
     * @param less_eq      the value for the comparison
     */
-    IsLessOrEqual( const T &less_eq)
+    IsLessOrEqualBase( const T& less_eq)
       : lesseqLimit(less_eq)
-    {
-    }
+    {}
 
   /** Evaluates the constraint
     * @param arg the object against which the constraint is evaluated.
@@ -63,7 +64,30 @@ class IsLessOrEqual : public Constraint<T>
     */
     virtual bool eval( const T &arg ) const
     {
-      return arg <= lesseqLimit;
+      return lesseqLimit >= arg;
+    }
+
+    Ref getLessEqLimit() const
+    {
+      return const_cast<Ref>(lesseqLimit);
+    }
+
+private:
+
+    const T lesseqLimit;
+};
+
+template <typename T>
+class IsLessOrEqual : public IsLessOrEqualBase<T>
+{
+  public:
+
+  /** Constructs the object
+    * @param less_eq      the value for the comparison
+    */
+    IsLessOrEqual( const T &less_eq)
+      : IsLessOrEqualBase<T>(less_eq)
+    {
     }
 
   /** Appends the description of this object to the buffer.
@@ -73,16 +97,36 @@ class IsLessOrEqual : public Constraint<T>
     virtual String describeTo( String &buffer ) const
     {
        String fmt = MOCKPP_PCHAR("lessOrEqual %1");
-       fmt << lesseqLimit;
+       fmt << IsLessOrEqualBase<T>::getLessEqLimit();
        buffer += fmt;
        return buffer;
     }
-
-  private:
-
-    const T lesseqLimit;
 };
 
+template <typename T>
+class IsLE : public IsLessOrEqualBase<AnyType>
+{
+  public:
+
+  /** Constructs the object
+    * @param lower      the value for the comparison
+    */
+    IsLE( const T& lower )
+      : IsLessOrEqualBase<AnyType>(lower)
+    {}
+
+  /** Appends the description of this object to the buffer.
+    * @param buffer The buffer that the description is appended to.
+    * @return The current content of the buffer data
+    */
+    virtual String describeTo( String &buffer ) const
+    {
+       String fmt = MOCKPP_PCHAR("greaterOrEqual %1");
+       fmt << any_cast<T>(IsLessOrEqualBase<AnyType>::getLessEqLimit());
+       buffer += fmt;
+       return buffer;
+    }
+};
 
 MOCKPP_NS_END
 
