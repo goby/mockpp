@@ -25,8 +25,8 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldSupportMIRROR );
 	CPPUNIT_TEST( testShouldSupportMIRROR1 );
 	CPPUNIT_TEST( testShouldSupportMIRROR2 );
-	CPPUNIT_TEST( testShouldThrowExceptionIfMIRRORTypeMismatch );
-	CPPUNIT_TEST( testShouldThrowExceptionIfMIRRORTypeMismatch1 );
+	CPPUNIT_TEST( testShouldDistinguashConstAndNonConstWhenUsingMIRROR );
+	CPPUNIT_TEST( testShouldDistiguishConstAndNonConstWhenUsingMIRROR_2 );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -54,7 +54,7 @@ public:
       ChainableMockMethod<int, AnyType> mocker;
    };
 
-   void testShouldThrowExceptionIfMIRRORTypeMismatch1()
+   void testShouldDistinguashConstAndNonConstWhenUsingMIRROR()
    {
       Class7 cls;
 
@@ -64,19 +64,15 @@ public:
       mm1.a = 1; mm1.b = 111;
 
       cls.mocker
+         .expects(never())
+         .with(MIRROR(&mm0));
+
+      cls.mocker
          .expects(once())
-         .with(MIRROR(&mm0))
+         .with(MIRROR<const MM*>(&mm0))
          .will(returnValue(10));
 
-      bool hasException = false;
-      try {
-         cls.bar(&mm1);
-      }
-      catch(...) {
-         hasException = true;
-      }
-
-      CPPUNIT_ASSERT(hasException);
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
    }
 
 	/////////////////////////////////////////////////////
@@ -99,7 +95,7 @@ public:
    struct MM
    { int a, b; };
 
-   void testShouldThrowExceptionIfMIRRORTypeMismatch()
+   void testShouldDistiguishConstAndNonConstWhenUsingMIRROR_2()
    {
       Class6 cls;
 
@@ -109,19 +105,15 @@ public:
       mm1.a = 1; mm1.b = 111;
 
       cls.mocker
+         .expects(never())
+         .with(MIRROR<const MM*>(&mm0));
+
+      cls.mocker
          .expects(once())
-         .with(MIRROR<const MM*>(&mm0))
+         .with(MIRROR(&mm0))
          .will(returnValue(10));
 
-		bool hasException = false;
-		try {
-			cls.bar(&mm1);
-		}
-		catch(...) {
-			hasException = true;
-		}
-
-      CPPUNIT_ASSERT(hasException);
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
    }
 
 	////////////////////////////////////////////////////////
@@ -154,7 +146,6 @@ public:
          .expects(once())
          .with(MIRROR(&mm0))
          .will(returnValue(10));
-
 
       CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
    }
