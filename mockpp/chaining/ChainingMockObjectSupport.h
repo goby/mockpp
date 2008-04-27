@@ -56,6 +56,7 @@
 #include <mockpp/constraint/IsGreaterOrEqual.h>
 #include <mockpp/constraint/IsLessThan.h>
 #include <mockpp/constraint/IsLessOrEqual.h>
+#include <mockpp/constraint/IsMirror.h>
 #include <mockpp/constraint/OutBound.h>
 
 #include <mockpp/chaining/CoreMock.h>
@@ -335,6 +336,20 @@ typename Constraint<T>::AP
 same( const T &operand )
 {
   return new IsSame<T>( operand );
+}
+
+
+/** Creates a constraint that checks if the memory map is same
+  * @ingroup grp_constraint_abbrev
+  * @see mockpp::IsMirror
+  * @param  operand  start addr to compare with
+  * @return the new constraint
+  */
+template <typename T>
+typename Constraint<T>::AP
+mirror( const T& addr )
+{
+  return new IsMirror<T>( addr );
 }
 
 

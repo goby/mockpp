@@ -1,4 +1,3 @@
-
 #include <mockpp/mockpp.h>
 
 #include <mockpp/chaining/ChainableMockObject.h>
@@ -44,6 +43,7 @@ class TestMockpp: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldSupportProcStubWithParametersOfConstReferenceType );
 	CPPUNIT_TEST( testShouldForbidOutboundConstReference );
 	CPPUNIT_TEST( testShouldBeAbleToSupportOutBoundList );
+	CPPUNIT_TEST( testShouldBeAbleToCompareMemory );
 	CPPUNIT_TEST_SUITE_END();
 
 	ChainableMockObject* mockObject;
@@ -428,6 +428,32 @@ public:
 		fooMocker(i);
 
 		CPPUNIT_ASSERT_EQUAL(10, i);
+	}
+
+	struct MM
+	{
+		char a;
+		int b;
+	};
+
+	void testShouldBeAbleToCompareMemory()
+	{
+		ChainableMockMethod<bool, MM*> fooMocker(MOCKPP_PCHAR("foo"), mockObject);	
+
+		MM m0;
+		MM m1;
+
+		memset((void*)&m0, 0, sizeof(MM));
+		memset((void*)&m1, 0, sizeof(MM));
+
+		m0.a = 1; m0.b = 2;
+		m1.a = 1; m1.b = 2;
+
+		fooMocker.stubs()
+			.with(mirror(&m0))
+			.will(returnValue(true));
+
+		CPPUNIT_ASSERT(fooMocker(&m1));
 	}
 };
 

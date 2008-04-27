@@ -1,14 +1,14 @@
 /** @file
-    @brief  Base class for argument constraints
+    @brief  Checks if the argument is equal to the referenced value
 
-  $Id: Constraint.h 1254 2007-01-01 16:46:44Z ewald-arnold $
+ $Id: IsMirror.h 1254 2008-04-27 14:47:02Z darwin-yuan $
 
- ***************************************************************************/
+***************************************************************************/
 
 /**************************************************************************
 
    begin                : Sat Aug 21 2004
-   copyright            : (C) 2002-2007 by Ewald Arnold
+   copyright            : (C) 2002-2008 by Ewald Arnold
    email                : mockpp at ewald-arnold dot de
 
    This program is free software; you can redistribute it and/or modify
@@ -31,48 +31,72 @@
 
  **/
 
-#ifndef MOCKPP_CONSTRAINT_H
-#define MOCKPP_CONSTRAINT_H
-
-#include <mockpp/util/AutoPointer.h>
+#ifndef MOCKPP_ISMIRROR_H
+#define MOCKPP_ISMIRROR_H
 
 #include <mockpp/mockpp.h> // always first
 
-#include <mockpp/SelfDescribing.h>
-
+#include <mockpp/constraint/Constraint.h>
+#include <mockpp/compat/Formatter.h>
 
 MOCKPP_NS_START
 
-
-/** A constraint over acceptable values.
-  * Constraints are part of a chained expectation and form a sub-expectation
-  * over a method parameter.
-  * @defgroup grp_constraint Parameter Constraints
-  */
 template <typename T>
-class Constraint : public SelfDescribing
+class IsMirror : public Constraint<T>
 {
   public:
 
-    typedef T Type;
+    virtual bool eval( const T& arg ) const
+    {
+		return false;
+    }
+};
 
-    typedef AutoPointer<Constraint<T> > AP;  //!< internal shorthand
+template <typename T>
+class IsMirror<T*> : public Constraint<T*>
+{
+  public:
+
+    typedef typename Constraint<T*>::Type Type;
+
+  /** Constructs the object
+    * @param equalArg   the value for the comparison
+    */
+    IsMirror( const T* addr)
+        : ptr( addr )
+    {}
 
   /** Destroys the object
     */
-    virtual ~Constraint()
+    virtual ~IsMirror()
     {}
 
   /** Evaluates the constraint
     * @param arg the object against which the constraint is evaluated.
-    * @return true:  arg meets the constraint,
+    * @return true:  o meets the constraint,
     * @return false if it does not.
     */
-    virtual bool eval( const Type &arg ) const = 0;
-};
+    virtual bool eval( const Type& arg ) const
+    {
+		return (arg == ptr) || 
+             !::memcmp((void*)ptr, (void*)arg, sizeof(T));
+    }
 
+    virtual String describeTo( String &buffer ) const
+    {
+      String fmt = MOCKPP_PCHAR( " mirrorTo %1" );
+      fmt << (unsigned int) ptr;
+      buffer += fmt;
+      return buffer;
+    }
+
+  private:
+
+    const T* ptr;
+};
 
 MOCKPP_NS_END
 
 
-#endif // MOCKPP_CONSTRAINT_H
+#endif // MOCKPP_ISMIRROR_H
+
