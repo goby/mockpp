@@ -140,11 +140,8 @@ class IsMIRROR<T*> : public Constraint<AnyType>
     {
 		Type** inv = any_cast<Type*>( &const_cast<AnyType&>(arg));
 
-		String fmt = mockpp_i18n(MOCKPP_PCHAR("type mismatch when trying to compare memory map"));
-		MOCKPP_ASSERT_TRUE_MESSAGE(fmt, inv != 0);
-
-		return (*inv == ptr) || 
-             !::memcmp((void*)ptr, (void*)*inv, sizeof(T));
+		return inv != 0 && ((*inv == ptr) || 
+             !::memcmp((void*)ptr, (void*)*inv, sizeof(T)));
     }
 
     virtual String describeTo( String &buffer ) const
