@@ -70,7 +70,6 @@
 #include <mockpp/chaining/TypeTraits.h>
 #include <mockpp/chaining/AnyType.h>
 
-#include <list>
 
 MOCKPP_NS_START
 
@@ -168,6 +167,8 @@ eq( const T& op )
   return new IsEqual<T>( op );
 }
 
+MOCKPP_API_DECL(Constraint<const char*>::AP) eq(const char* c);
+
 /** Creates a constraint that tests for equality of AnyType
   * @ingroup grp_constraint_abbrev
   * @see mockpp::IsEqual
@@ -178,9 +179,10 @@ template <typename T>
 typename Constraint<AnyType>::AP
 EQ( const T& op )
 {
-  typedef typename TypeTraits<T>::Type OT;
-  return eq<AnyType>(const_cast<OT&>(op));
+  return new IsEQ<T>( op );
 }
+
+MOCKPP_API_DECL(Constraint<AnyType>::AP) EQ(const char* c);
 
 /** Creates a constraint that tests for non-equality
   * @ingroup grp_constraint_abbrev
@@ -441,6 +443,12 @@ typename TypelessStub<T>::AP returnValue( T o )
   return new ReturnStub<T>( o );
 }
 
+/** Creates a stub returning a value
+  * @ingroup grp_stub_abbrev
+  * @see mockpp::ReturnStub
+  * @param  o  the value to return
+  * @return the new stub
+  */
 template <typename T>
 typename TypelessStub<AnyType>::AP RET(const T& o)
 {
