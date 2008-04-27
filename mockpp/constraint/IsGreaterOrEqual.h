@@ -38,23 +38,19 @@
 
 MOCKPP_NS_START
 
-
-/** Is the value greater or equal than another value?
-  * @ingroup grp_constraint
-  * @see mockpp::ge
-  */
 template <typename T>
-class IsGreaterOrEqual : public Constraint<T>
+class IsGreaterOrEqualBase : public Constraint<T>
 {
   public:
+
+    typedef typename TypeTraits<T>::RefType Ref;
 
   /** Constructs the object
     * @param lower      the value for the comparison
     */
-    IsGreaterOrEqual( const T&lower )
+    IsGreaterOrEqualBase( const T& lower )
       : lowerLimit(lower)
-    {
-    }
+    {}
 
   /** Evaluates the constraint
     * @param arg the object against which the constraint is evaluated.
@@ -66,6 +62,31 @@ class IsGreaterOrEqual : public Constraint<T>
       return lowerLimit <= arg;
     }
 
+    Ref getLowerLimit() const
+    {
+      return const_cast<Ref>(lowerLimit);
+    }
+
+private:
+    const T lowerLimit;
+};
+
+/** Is the value greater or equal than another value?
+  * @ingroup grp_constraint
+  * @see mockpp::ge
+  */
+template <typename T>
+class IsGreaterOrEqual : public IsGreaterOrEqualBase<T>
+{
+  public:
+
+  /** Constructs the object
+    * @param lower      the value for the comparison
+    */
+    IsGreaterOrEqual( const T& lower )
+      : IsGreaterOrEqualBase<T>(lower)
+    {}
+
   /** Appends the description of this object to the buffer.
     * @param buffer The buffer that the description is appended to.
     * @return The current content of the buffer data
@@ -73,16 +94,36 @@ class IsGreaterOrEqual : public Constraint<T>
     virtual String describeTo( String &buffer ) const
     {
        String fmt = MOCKPP_PCHAR("greaterOrEqual %1");
-       fmt << lowerLimit;
+       fmt << IsGreaterOrEqualBase<T>::getLowerLimit();
        buffer += fmt;
        return buffer;
     }
-
-  private:
-
-    const T lowerLimit;
 };
 
+template <typename T>
+class IsGE : public IsGreaterOrEqualBase<AnyType>
+{
+  public:
+
+  /** Constructs the object
+    * @param lower      the value for the comparison
+    */
+    IsGE( const T& lower )
+      : IsGreaterOrEqualBase<AnyType>(lower)
+    {}
+
+  /** Appends the description of this object to the buffer.
+    * @param buffer The buffer that the description is appended to.
+    * @return The current content of the buffer data
+    */
+    virtual String describeTo( String &buffer ) const
+    {
+       String fmt = MOCKPP_PCHAR("greaterOrEqual %1");
+       fmt << any_cast<T>(IsGreaterOrEqualBase<AnyType>::getLowerLimit());
+       buffer += fmt;
+       return buffer;
+    }
+};
 
 MOCKPP_NS_END
 

@@ -15,6 +15,9 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST_SUITE( TestAnyType );
 	CPPUNIT_TEST( testShouldSupportOutBoundAReferenceParameterOfAnyType );
 	CPPUNIT_TEST( testShouldForbidOutBoundAReferenceParameterOfAnyType );
+	CPPUNIT_TEST( testShouldSupportGE );
+	CPPUNIT_TEST( testShouldSupportGE1 );
+	CPPUNIT_TEST( testShouldSupportGE2 );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -25,6 +28,68 @@ public:
 	void tearDown()
 	{
 	}
+
+	////////////////////////////////////////////////////////
+   struct Class2 : public ChainableMockObject
+   {
+      Class2()
+         : ChainableMockObject(MOCKPP_PCHAR("Class2"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(T p1, int p2)
+      {
+         return mocker.anycall<int, T>(p1, p2);
+      }
+
+      ChainableMockMethod<int, AnyType, int> mocker;
+   };
+
+   void testShouldSupportGE2()
+   {
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(GE(3), ge(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(3, 3));
+
+      cls.verify();
+   }
+
+   void testShouldSupportGE1()
+   {
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(GE(3), ge(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(4, 2));
+
+      cls.verify();
+   }
+
+   void testShouldSupportGE()
+   {
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(GE(3), ge(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(3, 2));
+
+      cls.verify();
+   }
 
 	////////////////////////////////////////////////////////
 	struct Class1 : public ChainableMockObject

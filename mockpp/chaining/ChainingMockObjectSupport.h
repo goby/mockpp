@@ -243,6 +243,13 @@ le( const T &value )
 }
 
 
+template <typename T>
+typename Constraint<AnyType>::AP
+LE( const T &value )
+{
+  return le<AnyType>( value );
+}
+
 /** Creates a less-than constraint
   * @ingroup grp_constraint_abbrev
   * @see mockpp::IsLessThan
@@ -284,6 +291,12 @@ ge( const T &value )
   return new IsGreaterOrEqual<T>( value );
 }
 
+template <typename T>
+typename Constraint<AnyType>::AP
+GE( const T &value )
+{
+  return new IsGE<T>( value );
+}
 
 /** Creates a constraint that checks if an object is the same
   * @ingroup grp_constraint_abbrev
