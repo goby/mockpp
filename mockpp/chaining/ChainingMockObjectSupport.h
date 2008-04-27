@@ -148,7 +148,7 @@ OUTBOUND( const T& op )
 template <typename T,
 			template <typename T> class C >
 typename Constraint<T>::AP
-outBoundList(C<T> container)
+outBoundList(const C<T>& container)
 {
   return new OutBound<T>(container.begin(), container.end());
 }

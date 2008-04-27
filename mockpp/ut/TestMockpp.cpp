@@ -8,6 +8,8 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
+#include <list>
+
 using namespace mockpp;
 
 const char* foo()
@@ -41,6 +43,7 @@ class TestMockpp: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldBeAbleToSupportSetAFunctionInTestCaseAsStub );
 	CPPUNIT_TEST( testShouldSupportProcStubWithParametersOfConstReferenceType );
 	CPPUNIT_TEST( testShouldForbidOutboundConstReference );
+	CPPUNIT_TEST( testShouldBeAbleToSupportOutBoundList );
 	CPPUNIT_TEST_SUITE_END();
 
 	ChainableMockObject* mockObject;
@@ -316,6 +319,33 @@ public:
 
 		CPPUNIT_ASSERT_EQUAL(6,  fooMocker(i0, i1));
 		CPPUNIT_ASSERT_EQUAL(4, i0);
+	}
+
+	void testShouldBeAbleToSupportOutBoundList()
+	{
+		ChainableMockMethod<int, int&, int> fooMocker(MOCKPP_PCHAR("foo"), mockObject);	
+
+		int i0 = 3;
+		int i1 = 2;
+
+		std::list<int> lst;
+		lst.push_back(1);
+		lst.push_back(2);
+		lst.push_back(3);
+
+		fooMocker
+			.expects(exactly(3))
+			.with(outBoundList(lst), eq(i1))
+			.will(returnValue(0));
+
+		CPPUNIT_ASSERT_EQUAL(0,  fooMocker(i0, i1));
+		CPPUNIT_ASSERT_EQUAL(1, i0);
+
+		CPPUNIT_ASSERT_EQUAL(0,  fooMocker(i0, i1));
+		CPPUNIT_ASSERT_EQUAL(2, i0);
+
+		CPPUNIT_ASSERT_EQUAL(0,  fooMocker(i0, i1));
+		CPPUNIT_ASSERT_EQUAL(3, i0);
 	}
 
 	void testShouldBeAbleToSupportOutBoundByValue()

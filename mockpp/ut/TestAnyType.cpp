@@ -38,7 +38,7 @@ public:
       {}
 
       template <typename T>
-      int bar(T p1, int p2)
+      int bar(const T& p1, int p2)
       {
          return mocker.anycall<int, T>(p1, p2);
       }
