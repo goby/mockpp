@@ -67,6 +67,19 @@ struct TypeTraits<const T>
 };
 
 /*
+ * For non-reference type
+ */
+template <typename T>
+struct TypeTraits<const T*>
+{
+	typedef T* OriginalType;
+   typedef T*& ReferenceType;
+
+   typedef const T*  Type;
+   typedef const T*& RefType;
+};
+
+/*
  * For reference type
  */
 template <typename T>

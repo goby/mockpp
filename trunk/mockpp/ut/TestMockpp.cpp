@@ -44,6 +44,8 @@ class TestMockpp: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldForbidOutboundConstReference );
 	CPPUNIT_TEST( testShouldBeAbleToSupportOutBoundList );
 	CPPUNIT_TEST( testShouldBeAbleToCompareMemory );
+	CPPUNIT_TEST( testShouldBeAbleToCompareMemoryWithImplicitPointer );
+	CPPUNIT_TEST( testShouldBeAbleToCompareMemoryWithConstAddr );
 	CPPUNIT_TEST_SUITE_END();
 
 	ChainableMockObject* mockObject;
@@ -439,6 +441,48 @@ public:
 	void testShouldBeAbleToCompareMemory()
 	{
 		ChainableMockMethod<bool, MM*> fooMocker(MOCKPP_PCHAR("foo"), mockObject);	
+
+		MM m0;
+		MM m1;
+
+		memset((void*)&m0, 0, sizeof(MM));
+		memset((void*)&m1, 0, sizeof(MM));
+
+		m0.a = 1; m0.b = 2;
+		m1.a = 1; m1.b = 2;
+
+		fooMocker.stubs()
+			.with(mirror(&m0))
+			.will(returnValue(true));
+
+		CPPUNIT_ASSERT(fooMocker(&m1));
+	}
+
+   void testShouldBeAbleToCompareMemoryWithConstAddr()
+   {
+      ChainableMockMethod<bool, const MM*> fooMocker(MOCKPP_PCHAR("foo"), mockObject);
+
+      MM m0;
+      MM m1;
+
+      memset((void*)&m0, 0, sizeof(MM));
+      memset((void*)&m1, 0, sizeof(MM));
+
+      m0.a = 1; m0.b = 2;
+      m1.a = 1; m1.b = 2;
+
+      fooMocker.stubs()
+         .with(mirror<const MM*>(&m0))
+         .will(returnValue(true));
+
+      CPPUNIT_ASSERT(fooMocker(&m1));
+   }
+
+	typedef MM* PMM;
+
+	void testShouldBeAbleToCompareMemoryWithImplicitPointer()
+	{
+		ChainableMockMethod<bool, PMM> fooMocker(MOCKPP_PCHAR("foo"), mockObject);	
 
 		MM m0;
 		MM m1;
