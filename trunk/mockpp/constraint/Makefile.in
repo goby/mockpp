@@ -228,7 +228,7 @@ libconstraintinclude_HEADERS = IsAnything.h IsCloseTo.h IsEqual.h \
 				StringContains.h StringStartsWith.h StringEndsWith.h And.h IsGreaterOrEqual.h \
 	IsLessOrEqual.h Constraint.h ConstraintSet.h ConstraintSetN.h OutBound.h \
 		TypelessConstraint.h ConstraintHolder.h ConstraintList.h TriggeredConstraint.h \
-	TriggeredOutbound.h EqualityUtil.h
+	TriggeredOutbound.h EqualityUtil.h IsMirror.h
 
 EXTRA_DIST = \
    gen_constraintset_N.pl
