@@ -17,6 +17,8 @@ class TestVarArg: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldSupportVarArgs1 );
 	CPPUNIT_TEST( testShouldSupportVarArgs2 );
 	CPPUNIT_TEST( testShouldSupportStringVarArgs );
+	CPPUNIT_TEST( testShouldSupportStringVarArgsWithNE );
+	CPPUNIT_TEST( testShouldSupportStringVarArgsWithne );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -93,6 +95,34 @@ public:
 		cls.mocker
 			.expects(once())
 			.with(eq("%d, %s"), EQ(10), EQ("abc"))
+			.will(returnValue(0));
+
+		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d, %s", 10, "abc"));
+
+		cls.verify();
+	}
+
+	void testShouldSupportStringVarArgsWithNE()
+	{
+		Class1 cls;
+
+		cls.mocker
+			.expects(once())
+			.with(eq("%d, %s"), EQ(10), NE("abc"))
+			.will(returnValue(0));
+
+		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d, %s", 10, "abcd"));
+
+		cls.verify();
+	}
+
+	void testShouldSupportStringVarArgsWithne()
+	{
+		Class1 cls;
+
+		cls.mocker
+			.expects(once())
+			.with(ne("%s"), EQ(10), EQ("abc"))
 			.will(returnValue(0));
 
 		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d, %s", 10, "abc"));

@@ -197,6 +197,8 @@ ne( const T& op )
   return new IsNot<T>( new IsEqual<T>( op ) );
 }
 
+MOCKPP_API_DECL(Constraint<const char*>::AP) ne(const char* c);
+
 /** Creates a constraint that tests for non-equality of AnyType
   * @ingroup grp_constraint_abbrev
   * @see mockpp::IsNot
@@ -209,6 +211,8 @@ NE( const T& op )
 {
   return ne<AnyType>(op);
 }
+
+MOCKPP_API_DECL(Constraint<AnyType>::AP) NE(const char* c);
 
 /** Creates a constraint that tests for near-equality
   * @ingroup grp_constraint_abbrev

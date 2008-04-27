@@ -57,6 +57,16 @@ MOCKPP_API_DECL(Constraint<const char*>::AP) eq(const char* c)
   return new IsEqual<const char*>(c);
 }
 
+MOCKPP_API_DECL(Constraint<AnyType>::AP) NE(const char* c)
+{
+  return new IsNot<AnyType>( new IsEQ<const char*>(c) );
+}
+
+MOCKPP_API_DECL(Constraint<const char*>::AP) ne(const char* c)
+{
+  return new IsNot<const char*>( new IsEqual<const char*>( c ) );
+}
+
 MOCKPP_API_IMPL(AutoPointer<TypelessMatcher>) once()
 {
   return new InvokeOnceMatcher();
