@@ -39,23 +39,25 @@
 #include <mockpp/constraint/Constraint.h>
 #include <mockpp/compat/Formatter.h>
 
+#include <mockpp/chaining/AnyType.h>
 
 MOCKPP_NS_START
-
 
 /** Is the value greater than another value?
   * @ingroup grp_constraint
   * @see mockpp::gt
   */
 template <typename T>
-class IsGreaterThan : public Constraint<T>
+class IsGreaterThanBase : public Constraint<T>
 {
   public:
+
+    typedef typename TypeTraits<T>::RefType Ref;
 
   /** Constructs the object
     * @param greater the value for the comparison
     */
-    IsGreaterThan( const T&greater )
+    IsGreaterThanBase( const T& greater )
       : greaterLimit(greater)
     {
     }
@@ -70,16 +72,10 @@ class IsGreaterThan : public Constraint<T>
       return greaterLimit < arg;
     }
 
-  /** Appends the description of this object to the buffer.
-    * @param buffer The buffer that the description is appended to.
-    * @return The current content of the buffer data
-    */
-    virtual String describeTo( String &buffer ) const
+    //////////////////////////////////
+    Ref getGreaterLimit() const
     {
-       String fmt = MOCKPP_PCHAR("greaterThan %1");
-       fmt << greaterLimit;
-       buffer += fmt;
-       return buffer;
+      return const_cast<Ref>(greaterLimit);
     }
 
   private:
@@ -87,8 +83,63 @@ class IsGreaterThan : public Constraint<T>
     const T greaterLimit;
 };
 
+/** Is the value greater than another value?
+  * @ingroup grp_constraint
+  * @see mockpp::gt
+  */
+template <typename T>
+class IsGreaterThan : public IsGreaterThanBase<T>
+{
+  public:
+
+  /** Constructs the object
+    * @param greater the value for the comparison
+    */
+    IsGreaterThan( const T& greater )
+      : IsGreaterThanBase<T>(greater)
+    {
+    }
+
+  /** Appends the description of this object to the buffer.
+    * @param buffer The buffer that the description is appended to.
+    * @return The current content of the buffer data
+    */
+    virtual String describeTo( String &buffer ) const
+    {
+       String fmt = MOCKPP_PCHAR("greaterThan %1");
+       fmt << IsGreaterThanBase<T>::getGreaterLimit();
+       buffer += fmt;
+       return buffer;
+    }
+};
+
+template <typename T>
+class IsGT : public IsGreaterThanBase<AnyType>
+{
+  public:
+
+  /** Constructs the object
+    * @param greater the value for the comparison
+    */
+    IsGT( const T& greater )
+      : IsGreaterThanBase<AnyType>(greater)
+    {}
+
+  /** Appends the description of this object to the buffer.
+    * @param buffer The buffer that the description is appended to.
+    * @return The current content of the buffer data
+    */
+    virtual String describeTo( String &buffer ) const
+    {
+       String fmt = MOCKPP_PCHAR("greaterThan %1");
+       fmt << any_cast<T>(IsGreaterThanBase<AnyType>::getGreaterLimit());
+       buffer += fmt;
+       return buffer;
+    }
+};
 
 MOCKPP_NS_END
 
 
 #endif // MOCKPP_ISGREATER_H
+

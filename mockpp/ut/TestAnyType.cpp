@@ -15,6 +15,7 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST_SUITE( TestAnyType );
 	CPPUNIT_TEST( testShouldSupportOutBoundAReferenceParameterOfAnyType );
 	CPPUNIT_TEST( testShouldForbidOutBoundAReferenceParameterOfAnyType );
+	CPPUNIT_TEST( testShouldSupportGT );
 	CPPUNIT_TEST( testShouldSupportGE );
 	CPPUNIT_TEST( testShouldSupportGE1 );
 	CPPUNIT_TEST( testShouldSupportGE2 );
@@ -45,6 +46,21 @@ public:
 
       ChainableMockMethod<int, AnyType, int> mocker;
    };
+
+   void testShouldSupportGT()
+   {
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(GT(3), gt(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(4, 3));
+
+      cls.verify();
+   }
 
    void testShouldSupportGE2()
    {
