@@ -277,6 +277,18 @@ gt( const T &value )
   return new IsGreaterThan<T>( value );
 }
 
+/** Creates a greater-than constraint
+  * @ingroup grp_constraint_abbrev
+  * @see mockpp::IsGreaterThan
+  * @param  value  object to compare with
+  * @return the new constraint
+  */
+template <typename T>
+typename Constraint<AnyType>::AP
+GT( const T &value )
+{
+  return new IsGT<T>( value );
+}
 
 /** Creates a greater-or-equal constraint
   * @ingroup grp_constraint_abbrev
