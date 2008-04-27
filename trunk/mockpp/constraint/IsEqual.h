@@ -48,6 +48,8 @@ class IsEqualBase : public Constraint<T>
 {
   public:
 
+    typedef typename TypeTraits<T>::RefType Ref;
+
   /** Constructs the object
     * @param equalArg   the value for the comparison
     */
@@ -70,9 +72,9 @@ class IsEqualBase : public Constraint<T>
       return isEqualComparison(arg, ref);
     }
 
-    typename TypeTraits<T>::RefType getRef() const
+    Ref getRef() const
     {
-      return const_cast<typename TypeTraits<T>::RefType>(ref);
+      return const_cast<Ref>(ref);
     }
 
   protected:

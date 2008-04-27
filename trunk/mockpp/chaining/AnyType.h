@@ -103,6 +103,38 @@ public:
 		return content->operator==(*rhs.content);
 	}
 
+	bool operator<(const AnyType& rhs) const
+	{
+		if(content == 0 || rhs.content == 0)
+			return false;
+
+		return content->operator<(*rhs.content);
+	}
+
+	bool operator<=(const AnyType& rhs) const
+	{
+		if(content == 0 || rhs.content == 0)
+			return false;
+
+		return content->operator<=(*rhs.content);
+	}
+
+	bool operator>(const AnyType& rhs) const
+	{
+		if(content == 0 || rhs.content == 0)
+			return false;
+
+		return content->operator>(*rhs.content);
+	}
+
+	bool operator>=(const AnyType& rhs) const
+	{
+		if(content == 0 || rhs.content == 0)
+			return false;
+
+		return content->operator>=(*rhs.content);
+	}
+
 public: 
 
 	struct PlaceHolder
@@ -111,6 +143,10 @@ public:
 		virtual const std::type_info & type() const = 0;
 		virtual PlaceHolder* clone() const = 0;
 		virtual bool operator==(const PlaceHolder& rhs) const = 0;
+		virtual bool operator<=(const PlaceHolder& rhs) const = 0;
+		virtual bool operator>=(const PlaceHolder& rhs) const = 0;
+		virtual bool operator<(const PlaceHolder& rhs) const = 0;
+		virtual bool operator>(const PlaceHolder& rhs) const = 0;
 	};
 
 	template<typename ValueType>
@@ -126,14 +162,41 @@ public:
 		virtual PlaceHolder * clone() const
 		{ return new Holder(held); }
 
+		Holder<ValueType>* toPHolder(const PlaceHolder& rhs) const
+      {
+				return dynamic_cast<Holder<ValueType>*>(&const_cast<PlaceHolder&>(rhs));
+      }
+
 		virtual bool operator==(const PlaceHolder& rhs) const
 		{
-			Holder<ValueType>* p = \
-				dynamic_cast<Holder<ValueType>*>(&const_cast<PlaceHolder&>(rhs));
-
+			Holder<ValueType>* p = toPHolder(rhs);
 			return p && isEqualComparison(held, p->held);
 		}
+
+		virtual bool operator<(const PlaceHolder& rhs) const
+      {
+			Holder<ValueType>* p = toPHolder(rhs);
+			return p && held < p->held;
+      }
+
+		virtual bool operator<=(const PlaceHolder& rhs) const
+      {
+			Holder<ValueType>* p = toPHolder(rhs);
+			return p && held <= p->held;
+      }
 		
+		virtual bool operator>(const PlaceHolder& rhs) const
+      {
+			Holder<ValueType>* p = toPHolder(rhs);
+			return p && held > p->held;
+      }
+
+		virtual bool operator>=(const PlaceHolder& rhs) const
+      {
+			Holder<ValueType>* p = toPHolder(rhs);
+			return p && held >= p->held;
+      }
+
 		ValueType held;
 	};
 
