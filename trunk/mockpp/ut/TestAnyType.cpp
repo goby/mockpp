@@ -22,6 +22,9 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldSupportGE );
 	CPPUNIT_TEST( testShouldSupportGE1 );
 	CPPUNIT_TEST( testShouldSupportGE2 );
+	CPPUNIT_TEST( testShouldSupportLE );
+	CPPUNIT_TEST( testShouldSupportLE1 );
+	CPPUNIT_TEST( testShouldSupportLT);
 	CPPUNIT_TEST( testShouldSupportMIRROR );
 	CPPUNIT_TEST( testShouldSupportMIRROR1 );
 	CPPUNIT_TEST( testShouldSupportMIRROR2 );
@@ -38,6 +41,7 @@ public:
 	{
 	}
 
+	/////////////////////////////////////////////////////////
 	struct Class7 : public ChainableMockObject
    {
       Class7()
@@ -294,6 +298,51 @@ public:
 
       cls.verify();
    }
+
+	void testShouldSupportLE()
+	{
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(LE(3), le(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(3, 2));
+
+      cls.verify();
+	}
+
+	void testShouldSupportLE1()
+	{
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(LE(3), le(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(2, 2));
+
+      cls.verify();
+	}
+
+	void testShouldSupportLT()
+	{
+      Class2 cls;
+
+      cls.mocker
+         .expects(once())
+         .with(LT(3), lt(2))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(2, 1));
+
+      cls.verify();
+	}
 
 	////////////////////////////////////////////////////////
 	struct Class1 : public ChainableMockObject

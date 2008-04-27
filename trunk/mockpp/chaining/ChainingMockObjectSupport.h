@@ -252,7 +252,7 @@ eq( const T &operand, const T &deviation )
   */
 template <typename T>
 typename Constraint<T>::AP
-le( const T &value )
+le( const T& value )
 {
   return new IsLessOrEqual<T>( value );
 }
@@ -260,9 +260,9 @@ le( const T &value )
 
 template <typename T>
 typename Constraint<AnyType>::AP
-LE( const T &value )
+LE( const T& value )
 {
-  return le<AnyType>( value );
+  return new IsLE<T>( value );
 }
 
 /** Creates a less-than constraint
@@ -273,11 +273,17 @@ LE( const T &value )
   */
 template <typename T>
 typename Constraint<T>::AP
-lt( const T &value )
+lt( const T& value )
 {
   return new IsLessThan<T>( value );
 }
 
+template <typename T>
+typename Constraint<AnyType>::AP
+LT( const T& value )
+{
+  return new IsLT<T>( value );
+}
 
 /** Creates a greater-than constraint
   * @ingroup grp_constraint_abbrev
