@@ -50,6 +50,11 @@ class IsMirror : public Constraint<T>
     {
 		return false;
     }
+
+    virtual String describeTo( String &buffer ) const
+    {
+      return buffer;
+    }
 };
 
 template <typename T>
@@ -80,6 +85,66 @@ class IsMirror<T*> : public Constraint<T*>
     {
 		return (arg == ptr) || 
              !::memcmp((void*)ptr, (void*)arg, sizeof(T));
+    }
+
+    virtual String describeTo( String &buffer ) const
+    {
+      String fmt = MOCKPP_PCHAR( " mirrorTo %1" );
+      fmt << (unsigned int) ptr;
+      buffer += fmt;
+      return buffer;
+    }
+
+  private:
+
+    const T* ptr;
+};
+
+template <typename T>
+class IsMIRROR : public Constraint<AnyType>
+{
+  public:
+
+    virtual bool eval( const T& arg ) const
+    {
+		return false;
+    }
+
+    virtual String describeTo( String &buffer ) const
+    {
+      return buffer;
+    }
+};
+
+template <typename T>
+class IsMIRROR<T*> : public Constraint<AnyType>
+{
+  public:
+
+	 typedef typename TypeTraits<T>::OriginalType OT;
+	 typedef typename TypeTraits<T>::Type        Type;
+
+  /** Constructs the object
+    * @param equalArg   the value for the comparison
+    */
+    IsMIRROR( const T* addr)
+        : ptr( addr )
+    {}
+
+  /** Evaluates the constraint
+    * @param arg the object against which the constraint is evaluated.
+    * @return true:  o meets the constraint,
+    * @return false if it does not.
+    */
+    virtual bool eval( const AnyType& arg ) const
+    {
+		Type** inv = any_cast<Type*>( &const_cast<AnyType&>(arg));
+
+		String fmt = mockpp_i18n(MOCKPP_PCHAR("type mismatch when trying to compare memory map"));
+		MOCKPP_ASSERT_TRUE_MESSAGE(fmt, inv != 0);
+
+		return (*inv == ptr) || 
+             !::memcmp((void*)ptr, (void*)*inv, sizeof(T));
     }
 
     virtual String describeTo( String &buffer ) const

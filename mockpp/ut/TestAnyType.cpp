@@ -22,6 +22,11 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST( testShouldSupportGE );
 	CPPUNIT_TEST( testShouldSupportGE1 );
 	CPPUNIT_TEST( testShouldSupportGE2 );
+	CPPUNIT_TEST( testShouldSupportMIRROR );
+	CPPUNIT_TEST( testShouldSupportMIRROR1 );
+	CPPUNIT_TEST( testShouldSupportMIRROR2 );
+	CPPUNIT_TEST( testShouldThrowExceptionIfMIRRORTypeMismatch );
+	CPPUNIT_TEST( testShouldThrowExceptionIfMIRRORTypeMismatch1 );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -33,6 +38,195 @@ public:
 	{
 	}
 
+	struct Class7 : public ChainableMockObject
+   {
+      Class7()
+         : ChainableMockObject(MOCKPP_PCHAR("Class7"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(const T* p1)
+      {
+         return mocker.anycall<int, const T*>(p1);
+      }
+
+      ChainableMockMethod<int, AnyType> mocker;
+   };
+
+   void testShouldThrowExceptionIfMIRRORTypeMismatch1()
+   {
+      Class7 cls;
+
+      MM mm0, mm1;
+
+      mm0.a = 1; mm0.b = 111;
+      mm1.a = 1; mm1.b = 111;
+
+      cls.mocker
+         .expects(once())
+         .with(MIRROR(&mm0))
+         .will(returnValue(10));
+
+      bool hasException = false;
+      try {
+         cls.bar(&mm1);
+      }
+      catch(...) {
+         hasException = true;
+      }
+
+      CPPUNIT_ASSERT(hasException);
+   }
+
+	/////////////////////////////////////////////////////
+	struct Class6 : public ChainableMockObject
+   {
+      Class6()
+         : ChainableMockObject(MOCKPP_PCHAR("Class6"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(const T* p1)
+      {
+         return mocker.anycall<int, T*>(const_cast<T*>(p1));
+      }
+
+      ChainableMockMethod<int, AnyType> mocker;
+   };
+
+   struct MM
+   { int a, b; };
+
+   void testShouldThrowExceptionIfMIRRORTypeMismatch()
+   {
+      Class6 cls;
+
+      MM mm0, mm1;
+
+      mm0.a = 1; mm0.b = 111;
+      mm1.a = 1; mm1.b = 111;
+
+      cls.mocker
+         .expects(once())
+         .with(MIRROR<const MM*>(&mm0))
+         .will(returnValue(10));
+
+		bool hasException = false;
+		try {
+			cls.bar(&mm1);
+		}
+		catch(...) {
+			hasException = true;
+		}
+
+      CPPUNIT_ASSERT(hasException);
+   }
+
+	////////////////////////////////////////////////////////
+   struct Class5 : public ChainableMockObject
+   {
+      Class5()
+         : ChainableMockObject(MOCKPP_PCHAR("Class5"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(const T* p1)
+      {
+         return mocker.anycall<int, T*>(const_cast<T*>(p1));
+      }
+
+      ChainableMockMethod<int, AnyType> mocker;
+   };
+
+   void testShouldSupportMIRROR2()
+   {
+      Class5 cls;
+
+      MM mm0, mm1;
+
+      mm0.a = 1; mm0.b = 111;
+      mm1.a = 1; mm1.b = 111;
+
+      cls.mocker
+         .expects(once())
+         .with(MIRROR(&mm0))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
+   }
+
+	////////////////////////////////////////////////////////
+   struct Class4 : public ChainableMockObject
+   {
+      Class4()
+         : ChainableMockObject(MOCKPP_PCHAR("Class4"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(const T* p1)
+      {
+         return mocker.anycall<int, const T*>(p1);
+      }
+
+      ChainableMockMethod<int, AnyType> mocker;
+   };
+
+   void testShouldSupportMIRROR1()
+   {
+      Class4 cls;
+
+      MM mm0, mm1;
+
+      mm0.a = 1; mm0.b = 111;
+      mm1.a = 1; mm1.b = 111;
+
+      cls.mocker
+         .expects(once())
+         .with(MIRROR<const MM*>(&mm0))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
+   }
+	////////////////////////////////////////////////////////
+   struct Class3 : public ChainableMockObject
+   {
+      Class3()
+         : ChainableMockObject(MOCKPP_PCHAR("Class3"), 0)
+         , mocker(MOCKPP_PCHAR("bar"), this)
+      {}
+
+      template <typename T>
+      int bar(T* p1)
+      {
+         return mocker.anycall<int, T*>(p1);
+      }
+
+      ChainableMockMethod<int, AnyType> mocker;
+   };
+
+	void testShouldSupportMIRROR()
+   {
+      Class3 cls;
+
+		MM mm0, mm1;
+
+		mm0.a = 1; mm0.b = 111;
+		mm1.a = 1; mm1.b = 111;
+
+      cls.mocker
+         .expects(once())
+         .with(MIRROR(&mm0))
+         .will(returnValue(10));
+
+
+      CPPUNIT_ASSERT_EQUAL(10, cls.bar(&mm1));
+   }
 	////////////////////////////////////////////////////////
    struct Class2 : public ChainableMockObject
    {
