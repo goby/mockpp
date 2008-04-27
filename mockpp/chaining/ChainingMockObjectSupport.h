@@ -153,6 +153,20 @@ outBoundList(const C<T>& container)
   return new OutBound<T>(container.begin(), container.end());
 }
 
+/** Passes a value back via a reference (outboundList value).
+  * @ingroup grp_constraint_abbrev
+  * @see mockpp::OutBoundList
+  * @param  op  Container for objects to return at invoationwith
+  * @return the new constraint
+  */
+template <typename T,
+			template <typename T> class C >
+typename Constraint<AnyType>::AP
+OUTBOUNDL(const C<T>& container)
+{
+  return new OutBound<AnyType>(container.begin(), container.end());
+}
+
 
 /** Creates a constraint that tests for equality
   * @ingroup grp_constraint_abbrev

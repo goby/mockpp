@@ -8,6 +8,8 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
+#include <list>
+
 using namespace mockpp;
 
 class TestAnyType: public CPPUNIT_NS::TestFixture
@@ -15,6 +17,7 @@ class TestAnyType: public CPPUNIT_NS::TestFixture
 	CPPUNIT_TEST_SUITE( TestAnyType );
 	CPPUNIT_TEST( testShouldSupportOutBoundAReferenceParameterOfAnyType );
 	CPPUNIT_TEST( testShouldForbidOutBoundAReferenceParameterOfAnyType );
+	CPPUNIT_TEST( testShouldSupportOutBoundListAReferenceParameterOfAnyType );
 	CPPUNIT_TEST( testShouldSupportGT );
 	CPPUNIT_TEST( testShouldSupportGE );
 	CPPUNIT_TEST( testShouldSupportGE1 );
@@ -177,6 +180,34 @@ public:
 		long l = 1;
 
 		CPPUNIT_ASSERT_EQUAL(10, cls.bar(l, 2));
+		CPPUNIT_ASSERT_EQUAL((long)3, l);
+
+		cls.verify();
+	}
+
+	void testShouldSupportOutBoundListAReferenceParameterOfAnyType()
+	{
+		Class0 cls;
+
+		std::list<long> lst;
+		lst.push_back(1);
+		lst.push_back(2);
+		lst.push_back(3);
+
+		cls.mocker
+			.expects(exactly(3))
+			.with(OUTBOUNDL(lst), eq(2))
+			.will(returnValue(0));
+
+		long l = 1;
+
+		CPPUNIT_ASSERT_EQUAL(0, cls.bar(l, 2));
+		CPPUNIT_ASSERT_EQUAL((long)1, l);
+
+		CPPUNIT_ASSERT_EQUAL(0, cls.bar(l, 2));
+		CPPUNIT_ASSERT_EQUAL((long)2, l);
+
+		CPPUNIT_ASSERT_EQUAL(0, cls.bar(l, 2));
 		CPPUNIT_ASSERT_EQUAL((long)3, l);
 
 		cls.verify();
