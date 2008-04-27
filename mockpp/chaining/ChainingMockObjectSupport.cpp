@@ -47,6 +47,15 @@
 
 MOCKPP_NS_START
 
+MOCKPP_API_DECL(Constraint<AnyType>::AP) EQ(const char* c)
+{
+  return new IsEQ<const char*>(c);
+}
+
+MOCKPP_API_DECL(Constraint<const char*>::AP) eq(const char* c)
+{
+  return new IsEqual<const char*>(c);
+}
 
 MOCKPP_API_IMPL(AutoPointer<TypelessMatcher>) once()
 {

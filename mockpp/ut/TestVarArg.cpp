@@ -50,7 +50,7 @@ public:
 
 		cls.mocker
 			.expects(once())
-			.with(eq<const char*>("yes"))
+			.with(eq("yes"))
 			.will(returnValue(0));
 
 		CPPUNIT_ASSERT_EQUAL(0, cls.printf("yes"));
@@ -64,7 +64,7 @@ public:
 
 		cls.mocker
 			.expects(once())
-			.with(eq<const char*>("%d"), EQ(10))
+			.with(eq("%d"), EQ(10))
 			.will(returnValue(0));
 
 		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d", 10));
@@ -78,7 +78,7 @@ public:
 
 		cls.mocker
 			.expects(once())
-			.with(eq<const char*>("%d, %x"), EQ(10), EQ(3))
+			.with(eq("%d, %x"), EQ(10), EQ(3))
 			.will(returnValue(0));
 
 		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d, %x", 10, 3));
@@ -92,7 +92,7 @@ public:
 
 		cls.mocker
 			.expects(once())
-			.with(eq<const char*>("%d, %s"), EQ(10), EQ<const char*>("abc"))
+			.with(eq("%d, %s"), EQ(10), EQ("abc"))
 			.will(returnValue(0));
 
 		CPPUNIT_ASSERT_EQUAL(0, cls.printf("%d, %s", 10, "abc"));

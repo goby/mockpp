@@ -39,32 +39,25 @@
 #include <mockpp/constraint/Constraint.h>
 #include <mockpp/compat/Formatter.h>
 #include <mockpp/constraint/EqualityUtil.h>
+#include <mockpp/chaining/AnyType.h>
 
 MOCKPP_NS_START
 
-
-/** Is the value equal to another value, as tested by the
-  * invoked method? Basically the same as \c IsSame which compares
-  * by reference and a specializable comparison template.
-  * @ingroup grp_constraint
-  * @see mockpp::eq( const T& op )
-  * @see mockpp::IsSame
-  */
 template <typename T>
-class IsEqual : public Constraint<T>
+class IsEqualBase : public Constraint<T>
 {
   public:
 
   /** Constructs the object
     * @param equalArg   the value for the comparison
     */
-    IsEqual( const T &equalArg )
+    IsEqualBase( const T &equalArg )
         : ref( equalArg )
     {}
 
   /** Destroys the object
     */
-    virtual ~IsEqual()
+    virtual ~IsEqualBase()
     {}
 
   /** Evaluates the constraint
@@ -77,6 +70,35 @@ class IsEqual : public Constraint<T>
       return isEqualComparison(arg, ref);
     }
 
+    typename TypeTraits<T>::RefType getRef() const
+    {
+      return const_cast<typename TypeTraits<T>::RefType>(ref);
+    }
+
+  protected:
+
+    const T ref;
+};
+
+/** Is the value equal to another value, as tested by the
+  * invoked method? Basically the same as \c IsSame which compares
+  * by reference and a specializable comparison template.
+  * @ingroup grp_constraint
+  * @see mockpp::eq( const T& op )
+  * @see mockpp::IsSame
+  */
+template <typename T>
+class IsEqual : public IsEqualBase<T>
+{
+  public:
+
+  /** Constructs the object
+    * @param equalArg   the value for the comparison
+    */
+    IsEqual( const T &equalArg )
+        : IsEqualBase<T>(equalArg )
+    {}
+
   /** Appends the description of this object to the buffer.
     * @param buffer The buffer that the description is appended to.
     * @return The current content of the buffer data
@@ -84,16 +106,39 @@ class IsEqual : public Constraint<T>
     virtual String describeTo( String &buffer ) const
     {
       String fmt = MOCKPP_PCHAR( "equalTo %1" );
-      fmt << ref;
+      fmt << IsEqualBase<T>::getRef();
       buffer += fmt;
       return buffer;
     }
-
-  private:
-
-    const T ref;
 };
 
+//
+// For comparing the equality of AnyType
+// 
+template <typename T>
+class IsEQ : public IsEqualBase<AnyType>
+{
+  public:
+
+  /** Constructs the object
+    * @param equalArg   the value for the comparison
+    */
+    IsEQ( const AnyType &equalArg )
+        : IsEqualBase<AnyType>(equalArg )
+    {}
+
+  /** Appends the description of this object to the buffer.
+    * @param buffer The buffer that the description is appended to.
+    * @return The current content of the buffer data
+    */
+    virtual String describeTo( String &buffer ) const
+    {
+      String fmt = MOCKPP_PCHAR( "equalTo %1" );
+      fmt << any_cast<T>(IsEqualBase<AnyType>::getRef());
+      buffer += fmt;
+      return buffer;
+    }
+};
 
 MOCKPP_NS_END
 
