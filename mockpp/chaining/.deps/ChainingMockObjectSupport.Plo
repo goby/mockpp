@@ -99,8 +99,12 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
   /usr/include/c++/4.1.3/bits/locale_facets.tcc \
   /usr/include/c++/4.1.3/ostream /usr/include/c++/4.1.3/bits/ostream.tcc \
   /usr/include/c++/4.1.3/bits/sstream.tcc \
-  ../../mockpp/constraint/EqualityUtil.h ../../mockpp/constraint/IsSame.h \
-  ../../mockpp/constraint/IsNot.h ../../mockpp/constraint/IsCloseTo.h \
+  ../../mockpp/constraint/EqualityUtil.h ../../mockpp/chaining/AnyType.h \
+  ../../mockpp/compat/Asserter.h \
+  ../../mockpp/compat/AssertionFailedError.h \
+  ../../mockpp/compat/Exception.h ../../mockpp/chaining/TypeTraits.h \
+  ../../mockpp/constraint/IsSame.h ../../mockpp/constraint/IsNot.h \
+  ../../mockpp/constraint/IsCloseTo.h \
   ../../mockpp/constraint/StringContains.h \
   ../../mockpp/constraint/StringStartsWith.h \
   ../../mockpp/constraint/StringEndsWith.h \
@@ -109,14 +113,12 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
   ../../mockpp/constraint/IsGreaterOrEqual.h \
   ../../mockpp/constraint/IsLessThan.h \
   ../../mockpp/constraint/IsLessOrEqual.h \
-  ../../mockpp/constraint/OutBound.h ../../mockpp/ReturnObjectList.h \
-  /usr/include/c++/4.1.3/vector /usr/include/c++/4.1.3/bits/stl_vector.h \
+  ../../mockpp/constraint/IsMirror.h ../../mockpp/constraint/OutBound.h \
+  ../../mockpp/ReturnObjectList.h /usr/include/c++/4.1.3/vector \
+  /usr/include/c++/4.1.3/bits/stl_vector.h \
   /usr/include/c++/4.1.3/bits/stl_bvector.h \
   /usr/include/c++/4.1.3/bits/vector.tcc ../../mockpp/Verifiable.h \
-  ../../mockpp/util/AssertMo.h ../../mockpp/compat/Asserter.h \
-  ../../mockpp/compat/AssertionFailedError.h \
-  ../../mockpp/compat/Exception.h ../../mockpp/chaining/TypeTraits.h \
-  ../../mockpp/chaining/CoreMock.h \
+  ../../mockpp/util/AssertMo.h ../../mockpp/chaining/CoreMock.h \
   ../../mockpp/chaining/AbstractDynamicChainingMock.h \
   ../../mockpp/chaining/DynamicChainingMock.h \
   ../../mockpp/chaining/Invokable.h ../../mockpp/chaining/Invocation.h \
@@ -139,9 +141,6 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
   ../../mockpp/stub/TestFailureStub.h ../../mockpp/stub/ReturnStub.h \
   ../../mockpp/stub/ThrowStub.h ../../mockpp/stub/RandomStub.h \
   ../../mockpp/stub/ReturnObjectListStub.h \
-  ../../mockpp/chaining/AnyType.h /usr/include/c++/4.1.3/list \
-  /usr/include/c++/4.1.3/bits/stl_list.h \
-  /usr/include/c++/4.1.3/bits/list.tcc \
   ../../mockpp/chaining/OnConsecutiveCalls.h \
   ../../mockpp/stub/StubSequence.h \
   ../../mockpp/stub/TypelessStubSequence.h \
@@ -459,6 +458,16 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
 
 ../../mockpp/constraint/EqualityUtil.h:
 
+../../mockpp/chaining/AnyType.h:
+
+../../mockpp/compat/Asserter.h:
+
+../../mockpp/compat/AssertionFailedError.h:
+
+../../mockpp/compat/Exception.h:
+
+../../mockpp/chaining/TypeTraits.h:
+
 ../../mockpp/constraint/IsSame.h:
 
 ../../mockpp/constraint/IsNot.h:
@@ -481,6 +490,8 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
 
 ../../mockpp/constraint/IsLessOrEqual.h:
 
+../../mockpp/constraint/IsMirror.h:
+
 ../../mockpp/constraint/OutBound.h:
 
 ../../mockpp/ReturnObjectList.h:
@@ -496,14 +507,6 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
 ../../mockpp/Verifiable.h:
 
 ../../mockpp/util/AssertMo.h:
-
-../../mockpp/compat/Asserter.h:
-
-../../mockpp/compat/AssertionFailedError.h:
-
-../../mockpp/compat/Exception.h:
-
-../../mockpp/chaining/TypeTraits.h:
 
 ../../mockpp/chaining/CoreMock.h:
 
@@ -562,14 +565,6 @@ ChainingMockObjectSupport.lo ChainingMockObjectSupport.o:  \
 ../../mockpp/stub/RandomStub.h:
 
 ../../mockpp/stub/ReturnObjectListStub.h:
-
-../../mockpp/chaining/AnyType.h:
-
-/usr/include/c++/4.1.3/list:
-
-/usr/include/c++/4.1.3/bits/stl_list.h:
-
-/usr/include/c++/4.1.3/bits/list.tcc:
 
 ../../mockpp/chaining/OnConsecutiveCalls.h:
 
