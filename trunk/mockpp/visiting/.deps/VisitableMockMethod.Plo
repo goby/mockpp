@@ -111,7 +111,7 @@ VisitableMockMethod.lo VisitableMockMethod.o: VisitableMockMethod.cpp \
   ../../mockpp/constraint/ConstraintHolder.h \
   ../../mockpp/constraint/TypelessConstraint.h \
   ../../mockpp/constraint/IsEqual.h \
-  ../../mockpp/constraint/EqualityUtil.h \
+  ../../mockpp/constraint/EqualityUtil.h ../../mockpp/chaining/AnyType.h \
   ../../mockpp/constraint/IsAnything.h \
   ../../mockpp/visiting/VisitableMockObject_macro.h \
   ../../mockpp/visiting/VisitableMockObject_template.h \
@@ -460,6 +460,8 @@ VisitableMockMethod.lo VisitableMockMethod.o: VisitableMockMethod.cpp \
 ../../mockpp/constraint/IsEqual.h:
 
 ../../mockpp/constraint/EqualityUtil.h:
+
+../../mockpp/chaining/AnyType.h:
 
 ../../mockpp/constraint/IsAnything.h:
 
