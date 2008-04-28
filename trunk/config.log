@@ -446,7 +446,7 @@ configure:9438: checking whether stripping libraries is possible
 configure:9443: result: yes
 configure:9567: checking for shl_load
 configure:9623: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccz1fgxl.o: In function `main':
+/tmp/ccs6mZjc.o: In function `main':
 /home/darwin/software/mockpp-revised/revised-mockpp/conftest.c:55: undefined reference to `shl_load'
 collect2: ld returned 1 exit status
 configure:9629: $? = 1
@@ -554,7 +554,7 @@ configure: failed program was:
 configure:9710: result: no
 configure:9715: checking for dlopen
 configure:9771: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccEy9RZw.o: In function `main':
+/tmp/ccAOUgzr.o: In function `main':
 /home/darwin/software/mockpp-revised/revised-mockpp/conftest.c:55: undefined reference to `dlopen'
 collect2: ld returned 1 exit status
 configure:9777: $? = 1
@@ -632,7 +632,7 @@ configure:10127: checking whether a statically linked program can dlopen itself
 configure:10201: gcc -o conftest -g -O2  -DHAVE_DLFCN_H  -Wl,--export-dynamic -static conftest.c -ldl  >&5
 configure: In function 'main':
 configure:10197: warning: incompatible implicit declaration of built-in function 'exit'
-/tmp/ccyX8MKZ.o: In function `main':
+/tmp/ccmMpsDD.o: In function `main':
 /home/darwin/software/mockpp-revised/revised-mockpp/configure:10185: warning: Using 'dlopen' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
 configure:10204: $? = 0
 /usr/local/apr/lib/: cannot read file data: Is a directory
