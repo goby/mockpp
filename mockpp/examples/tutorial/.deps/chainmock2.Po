@@ -152,7 +152,8 @@ chainmock2.o chainmock2.o: chainmock2.cpp ../../../mockpp/mockpp.h \
   ../../../mockpp/Throwable.h ../../../mockpp/constraint/And.h \
   ../../../mockpp/constraint/Or.h ../../../mockpp/constraint/IsEqual.h \
   ../../../mockpp/constraint/EqualityUtil.h \
-  ../../../mockpp/constraint/IsSame.h ../../../mockpp/constraint/IsNot.h \
+  ../../../mockpp/chaining/AnyType.h ../../../mockpp/constraint/IsSame.h \
+  ../../../mockpp/constraint/IsNot.h \
   ../../../mockpp/constraint/IsCloseTo.h \
   ../../../mockpp/constraint/StringContains.h \
   ../../../mockpp/constraint/StringStartsWith.h \
@@ -162,13 +163,11 @@ chainmock2.o chainmock2.o: chainmock2.cpp ../../../mockpp/mockpp.h \
   ../../../mockpp/constraint/IsGreaterOrEqual.h \
   ../../../mockpp/constraint/IsLessThan.h \
   ../../../mockpp/constraint/IsLessOrEqual.h \
+  ../../../mockpp/constraint/IsMirror.h \
   ../../../mockpp/constraint/OutBound.h \
   ../../../mockpp/ReturnObjectList.h ../../../mockpp/util/AssertMo.h \
   ../../../mockpp/stub/ThrowStub.h ../../../mockpp/stub/RandomStub.h \
   ../../../mockpp/stub/ReturnObjectListStub.h \
-  ../../../mockpp/chaining/AnyType.h /usr/include/c++/4.1.3/list \
-  /usr/include/c++/4.1.3/bits/stl_list.h \
-  /usr/include/c++/4.1.3/bits/list.tcc \
   ../../../mockpp/chaining/OnConsecutiveCalls.h \
   ../../../mockpp/stub/StubSequence.h \
   ../../../mockpp/stub/TypelessStubSequence.h \
@@ -622,6 +621,8 @@ consumer.h:
 
 ../../../mockpp/constraint/EqualityUtil.h:
 
+../../../mockpp/chaining/AnyType.h:
+
 ../../../mockpp/constraint/IsSame.h:
 
 ../../../mockpp/constraint/IsNot.h:
@@ -644,6 +645,8 @@ consumer.h:
 
 ../../../mockpp/constraint/IsLessOrEqual.h:
 
+../../../mockpp/constraint/IsMirror.h:
+
 ../../../mockpp/constraint/OutBound.h:
 
 ../../../mockpp/ReturnObjectList.h:
@@ -655,14 +658,6 @@ consumer.h:
 ../../../mockpp/stub/RandomStub.h:
 
 ../../../mockpp/stub/ReturnObjectListStub.h:
-
-../../../mockpp/chaining/AnyType.h:
-
-/usr/include/c++/4.1.3/list:
-
-/usr/include/c++/4.1.3/bits/stl_list.h:
-
-/usr/include/c++/4.1.3/bits/list.tcc:
 
 ../../../mockpp/chaining/OnConsecutiveCalls.h:
 
